@@ -22,6 +22,12 @@ class WithDeletedCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
+        if (method_exists($model, 'trashed') ||
+            method_exists($model, 'withTrashed')
+        ) {
+            $model = $model->withTrashed();
+        }
+
         return $model;
     }
 }

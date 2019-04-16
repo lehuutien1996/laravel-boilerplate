@@ -22,6 +22,12 @@ class OnlyDeletedCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
+        if (method_exists($model, 'trashed') ||
+            method_exists($model, 'onlyTrashed')
+        ) {
+            $model = $model->onlyTrashed();
+        }
+
         return $model;
     }
 }
