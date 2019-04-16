@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Criteria;
+namespace App\Repositories\Criteria\Common;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
