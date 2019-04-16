@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Repositories\Criteria;
+namespace App\Repositories\Criteria\Common;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Class OnlyDeletedCriteria.
+ * Class WithDeletedCriteria.
  *
  * @package namespace App\Repositories\Criteria;
  */
-class OnlyDeletedCriteria implements CriteriaInterface
+class WithDeletedCriteria implements CriteriaInterface
 {
     /**
      * Apply criteria in query repository
@@ -22,6 +22,12 @@ class OnlyDeletedCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
+        if (method_exists($model, 'trashed') ||
+            method_exists($model, 'withTrashed')
+        ) {
+            $model = $model->withTrashed();
+        }
+
         return $model;
     }
 }

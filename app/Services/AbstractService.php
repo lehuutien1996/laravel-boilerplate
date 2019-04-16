@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\RepositoryInterface;
-use App\Repositories\Criteria\OnlyDeletedCriteria;
-use App\Repositories\Criteria\WithDeletedCriteria;
+use App\Repositories\Criteria\Common\OnlyDeletedCriteria;
+use App\Repositories\Criteria\Common\WithDeletedCriteria;
 use App\Services\Concerns\HasAttributeModification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
